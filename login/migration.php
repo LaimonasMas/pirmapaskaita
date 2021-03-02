@@ -1,4 +1,3 @@
-
 <?php
 // vienkartinis. naudojamas pirma karta uzpildyti duomenim.
 $users = [
