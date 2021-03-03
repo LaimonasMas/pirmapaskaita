@@ -3,4 +3,4 @@ session_start();
 
 define('URL', 'http://localhost/pirmapaskaita/login/'); // <--- konstanta
 
-_d($_SESSION, 'SESIJA--->');
+// _d($_SESSION, 'SESIJA--->');
