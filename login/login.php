@@ -1,6 +1,6 @@
 <?php 
 require __DIR__.'/bootstrap.php';
-
+_d($_SESSION);
 // LOGOUT scenarijus
 if (isset($_GET['logout'])) {
     //keli budai
