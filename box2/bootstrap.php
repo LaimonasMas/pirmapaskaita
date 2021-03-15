@@ -1,10 +1,10 @@
 
 <?php
 session_start();
-define('URL', 'http://localhost/zuikis/box2/'); // <--- konstanta
+define('URL', 'http://localhost/pirmapaskaita/box2/'); // <--- konstanta
 define('DIR', __DIR__.'/');
 
-define('INSTALL_DIR', '/zuikis/box2/');
+define('INSTALL_DIR', '/pirmapaskaita/box2/');
 
 
 require DIR. 'app/BananaController.php';
