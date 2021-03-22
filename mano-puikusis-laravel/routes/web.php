@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GardenController;
+use App\Http\Controllers\PostCalculatorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,3 +28,7 @@ Route::get('kelias-i-lara2', function () {
 });
 
 Route::get('gates/{vaisius}/{id}', [GardenController::class, 'index']);
+
+Route::get('calc', [PostCalculatorController::class, 'show'])->name('show-calc');
+Route::post('calc', [PostCalculatorController::class, 'calc'])->name('do-math');
+
