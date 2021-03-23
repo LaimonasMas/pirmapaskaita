@@ -113,6 +113,7 @@ class BoxController extends Controller
      */
     public function destroy(Box $box)
     {
-        //
+        $box->delete();
+        return redirect()->route('box.index'); 
     }
 }
