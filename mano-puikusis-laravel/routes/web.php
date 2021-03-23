@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GardenController;
 use App\Http\Controllers\PostCalculatorController;
-
+use App\Http\Controllers\BoxController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,4 +31,14 @@ Route::get('gates/{vaisius}/{id}', [GardenController::class, 'index']);
 
 Route::get('calc', [PostCalculatorController::class, 'show'])->name('show-calc');
 Route::post('calc', [PostCalculatorController::class, 'calc'])->name('do-math');
+
+Route::group(['prefix' => 'box'], function(){
+    Route::get('', [BoxController::class, 'index'])->name('box.index');
+    Route::get('create', [BoxController::class, 'create'])->name('box.create'); // rodo tuscia nauja forma
+    Route::post('store', [BoxController::class, 'store'])->name('box.store'); // uzsaugo nauja boxa
+    Route::get('edit/{box}', [BoxController::class, 'edit'])->name('box.edit');
+    Route::post('update/{box}', [BoxController::class, 'update'])->name('box.update');
+    Route::post('delete/{box}', [BoxController::class, 'destroy'])->name('box.destroy');
+    Route::get('show/{box}', [BoxController::class, 'show'])->name('box.show');
+ });
 

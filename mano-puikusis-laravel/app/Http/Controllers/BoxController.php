@@ -14,7 +14,8 @@ class BoxController extends Controller
      */
     public function index()
     {
-        //
+        $boxes = Box::all();
+        return view('box.index', ['boxes' => $boxes]);
     }
 
     /**
@@ -24,7 +25,7 @@ class BoxController extends Controller
      */
     public function create()
     {
-        //
+        return view('box.create');
     }
 
     /**
@@ -35,7 +36,10 @@ class BoxController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $box = new Box;
+        $box->bananas = $request->bananas_in_box;
+        $box->save();
+        return redirect()->route('box.index');
     }
 
     /**
