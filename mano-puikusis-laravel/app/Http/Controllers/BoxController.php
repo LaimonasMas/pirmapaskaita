@@ -5,6 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\Box;
 use Illuminate\Http\Request;
 
+/*
+$box Modelio objektas. Vienas daiktas sukurtas is modelio klases / eilute duomenu bazeje
+$boxes Objektas-kolekcija. Visu box rinkinys. / visa lentele boxes
+'box' stringas naudojamas vardams arba url'ams sudaryti
+Box Modelio klases vardas, tas kuris yra sukuriamas komanda make:model Box
+
+*/
+
 class BoxController extends Controller
 {
     /**
@@ -14,7 +22,10 @@ class BoxController extends Controller
      */
     public function index()
     {
-        $boxes = Box::all();
+        $boxes = Box::all(); // visos dezes is DB
+        $boxes = $boxes->sortBy('id');
+     // objektas-kolekcija (masyvas kaip objektas, galima foreach'int kaip array, bet kartu ir naudoti kaip objekto metodus)
+
         return view('box.index', ['boxes' => $boxes]);
     }
 
@@ -36,9 +47,10 @@ class BoxController extends Controller
      */
     public function store(Request $request)
     {
-        $box = new Box;
+        $box = new Box; // <--- Modelis (abstraktus kodas/objektas kompe)
         $box->bananas = $request->bananas_in_box;
-        $box->save();
+        // DB bananas             formos name
+        $box->save(); // <--- Modelis irasomas i DB
         return redirect()->route('box.index');
     }
 
@@ -61,7 +73,7 @@ class BoxController extends Controller
      */
     public function edit(Box $box)
     {
-        //
+        return view('box.edit', ['box' => $box]);
     }
 
     /**
@@ -73,7 +85,24 @@ class BoxController extends Controller
      */
     public function update(Request $request, Box $box)
     {
-        //
+        $box->bananas = $request->bananas_in_box;
+        // DB bananas             formos name
+        $box->save(); // <--- Modelis irasomas i DB
+        return redirect()->route('box.index');
+    }
+
+    public function add(Request $request, Box $box)
+    {
+        return view('box.add', ['box' => $box]);
+
+    }
+
+    public function addToBox(Request $request, Box $box)
+    {
+        $box->bananas = $box->bananas + $request->add;
+        // DB bananas             formos name
+        $box->save(); // <--- Modelis irasomas i DB
+        return redirect()->route('box.index');
     }
 
     /**

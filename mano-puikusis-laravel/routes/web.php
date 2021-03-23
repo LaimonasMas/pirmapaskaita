@@ -36,8 +36,14 @@ Route::group(['prefix' => 'box'], function(){
     Route::get('', [BoxController::class, 'index'])->name('box.index');
     Route::get('create', [BoxController::class, 'create'])->name('box.create'); // rodo tuscia nauja forma
     Route::post('store', [BoxController::class, 'store'])->name('box.store'); // uzsaugo nauja boxa
-    Route::get('edit/{box}', [BoxController::class, 'edit'])->name('box.edit');
-    Route::post('update/{box}', [BoxController::class, 'update'])->name('box.update');
+    Route::get('edit/{box}', [BoxController::class, 'edit'])->name('box.edit'); // rodo uzpildyta forma
+    
+    Route::get('add/{box}', [BoxController::class, 'add'])->name('box.add'); // rodo pridejimo laukeli
+    Route::post('add-to-box/{box}', [BoxController::class, 'addToBox'])->name('box.add_to_box'); // prideda ir uzsaugo
+
+
+
+    Route::post('update/{box}', [BoxController::class, 'update'])->name('box.update'); // uzsaugo konkretu redaguota boxa
     Route::post('delete/{box}', [BoxController::class, 'destroy'])->name('box.destroy');
     Route::get('show/{box}', [BoxController::class, 'show'])->name('box.show');
  });
