@@ -75,7 +75,19 @@ while ($row = $stmt->fetch())
 }
 
 
-// **********IRASYMAS I DB***************
+// *************TRYNIMAS***************//
+$sql = "DELETE FROM trees WHERE name='Kastonas'";
+$pdo->query($sql);
+
+
+// **********IRASYMAS I DB*************//
 $sql = "INSERT INTO trees (name, height, type)
 VALUES ('Kastonas', '7.99', 2)";
 $pdo->query($sql);
+
+
+//********REDAGAVIMAS*****************//
+$sql = "UPDATE trees SET height=88.88 WHERE name='Kastonas'";
+$pdo->query($sql);
+
+
