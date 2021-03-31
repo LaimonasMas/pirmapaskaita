@@ -25,13 +25,17 @@ try {
 
 echo '<h1>Viskas</h1>';
 
-$sql = "SELECT name, height, id FROM trees"; // <--- sql formavimas (ko prasai is DB)
+// $sql = "SELECT name, height, id FROM trees"; // <--- sql formavimas (ko prasai is DB)
+$sql = "SELECT *
+FROM treetypes
+INNER JOIN trees
+ON treetypes.id = trees.type;";
 
 $stmt = $pdo->query($sql); // <--- sql perdavimas i duomenu baze. Gaunu statementa $stmt
 
 while ($row = $stmt->fetch())
 {
-    echo 'Medis: ' . $row['name'] . ', ' . 'Aukstis: ' . $row['height'] . 'm, ' . 'id: ' . $row['id'] . '<br>';
+    echo 'Medis: ' . $row['name'] . ', ' . 'Aukstis: ' . $row['height'] . 'm, ' . 'tipas: ' . $row['typeoftree'] . '<br>';
 }
 
 
